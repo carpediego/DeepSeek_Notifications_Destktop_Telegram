@@ -215,7 +215,7 @@ También: los canales son *fire-and-forget*. Un proveedor caído nunca rechaza e
 
 - El canal de escritorio es **solo Windows** (usa PowerShell + WinRT). En Linux/macOS usá Telegram.
 - El aviso es una línea de texto: no hay botones, ni deep link al turno, ni historial.
-- El título de Windows se recorta a ASCII en versiones antiguas del canal; hoy se envía Unicode dentro del XML del toast.
+- El toast no parte el texto en varias líneas: un cuerpo muy largo se ve recortado.
 - No persiste nada: si el host estaba cerrado, ese turno no se notifica.
 
 ## Seguridad
