@@ -1,0 +1,16 @@
+# Dependencias (el plugin no tiene ninguna, pero el perfil de DSH las crea)
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# Configuracion real: contiene el token del bot de Telegram
+turn-notify.json
+turn-notify.example.local.json
+
+# Logs de diagnostico
+*.log
+
+# Basura del sistema
+.DS_Store
+Thumbs.db
+desktop.ini

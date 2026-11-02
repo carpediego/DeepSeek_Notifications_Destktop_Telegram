@@ -1,0 +1,17 @@
+# Ejemplo de configuracion. Copiar a $DSH_HOME/turn-notify.json
+# ($DSH_HOME suele ser %USERPROFILE%\.dsh en Windows).
+#
+# El archivo real NO va al repositorio: contiene el token del bot.
+{
+  "desktop": true,
+  "desktopAppId": "com.deepseek.dsh",
+  "desktopSound": "fallback",
+  "minTurnDurationMs": 5000,
+  "notifyOnError": true,
+  "notifyOnApproval": true,
+  "telegram": {
+    "enabled": true,
+    "botToken": "",
+    "chatId": ""
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "dsh-turn-notify",
+  "version": "1.0.0",
+  "description": "Desktop + Telegram notifications for DeepSeek Harness turns: finished, error and approval-waiting events.",
+  "license": "MIT",
+  "author": "carpediego",
+  "homepage": "https://github.com/carpediego/DeepSeek_Notifications_Destktop_Telegram",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carpediego/DeepSeek_Notifications_Destktop_Telegram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/carpediego/DeepSeek_Notifications_Destktop_Telegram/issues"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "notifications",
+    "telegram",
+    "windows-toast"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "test",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "test": "node test/run.mjs",
+    "send-test": "node test/send-test.mjs",
+    "telegram-setup": "node test/telegram-setup.mjs"
+  }
+}

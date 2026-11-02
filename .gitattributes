@@ -1,0 +1,6 @@
+# Normalizar finales de linea: el repo se usa en Windows, Linux y macOS.
+* text=auto eol=lf
+
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf

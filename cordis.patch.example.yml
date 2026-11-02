@@ -1,0 +1,18 @@
+# Fila que hay que insertar en el patch del perfil de DSH.
+#
+# Archivo destino: $DSH_HOME/profiles/<perfil>/cordis.patch.yml
+# (en la app de escritorio el perfil suele llamarse "desktop").
+#
+# IMPORTANTE: va como `- insert:` en la capa de usuario del perfil, NO dentro
+# del patch de un bundle. En dsh 0.2.1-rc.5 las filas insertadas por un bundle
+# aparecen en `dsh --dump-config` pero nunca se importan: el plugin queda
+# cargado en el papel y muerto en la practica.
+#
+# Reemplazar <RUTA_DEL_PLUGIN> por la ruta absoluta donde se copio esta carpeta,
+# con barras normales y el prefijo file:///.
+#   Windows:  file:///C:/Users/<usuario>/.dsh/plugins/dsh-turn-notify/lib/index.js
+#   Linux:    file:///home/<usuario>/.dsh/plugins/dsh-turn-notify/lib/index.js
+#   macOS:    file:///Users/<usuario>/.dsh/plugins/dsh-turn-notify/lib/index.js
+- insert:
+    - id: turn-notify
+      name: 'file:///<RUTA_DEL_PLUGIN>/lib/index.js'
