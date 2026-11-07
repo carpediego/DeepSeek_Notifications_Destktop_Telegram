@@ -145,7 +145,7 @@ Archivo: `$DSH_HOME/turn-notify.json`. Se relee en **cada evento**: cambiar el t
 | `desktop` | `true` | Activa el toast de Windows |
 | `desktopAppId` | `com.deepseek.dsh` | AUMID con el que Windows atribuye el toast. Si no está registrado, cae al de Windows PowerShell |
 | `desktopSound` | `"fallback"` | `"fallback"` pitido solo si el toast falla · `"always"` siempre · `"off"` nunca |
-| `minTurnDurationMs` | `5000` | Ignora turnos más cortos (evita spam en respuestas rápidas) |
+| `minTurnDurationMs` | `5000` | Ignora turnos más cortos (evita spam en respuestas rápidas). Poné `0` para que avise siempre, incluso en respuestas de dos segundos |
 | `notifyOnError` | `true` | Avisa cuando el turno falla |
 | `notifyOnApproval` | `true` | Avisa cuando una herramienta espera aprobación |
 | `telegram.enabled` | `true` | Apaga solo Telegram |
