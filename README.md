@@ -164,9 +164,17 @@ Ejemplo completo en [`turn-notify.example.json`](turn-notify.example.json).
 
 | Evento | Título | Cuerpo |
 | --- | --- | --- |
-| Turno terminado | `DSH terminó` | `<título de la sesión> · <duración>` |
-| Error | `DSH error` | `<sesión> · <mensaje>` |
-| Aprobación pendiente | `DSH necesita tu aprobación` | `<sesión>` |
+| Turno terminado | `DSH terminó` | `<conversación> · <duración>` |
+| Error | `DSH error` | `<conversación> · <mensaje>` |
+| Aprobación pendiente | `DSH necesita tu aprobación` | `<conversación>` |
+
+`<conversación>` se resuelve en este orden, y el primero que exista gana:
+
+1. El **título de la conversación** que anuncia DSH (evento `session/title`).
+2. El nombre de la **carpeta del proyecto** del directorio de trabajo de la sesión.
+3. `Sesión <id corto>`, solo si no hay ninguna de las dos.
+
+Ejemplo de aviso: `DSH terminó` → `Arreglar el carrito de compras · 2m 14s`.
 
 ---
 
@@ -193,13 +201,15 @@ Si el toast no aparece pero `turn-notify-desktop.log` dice `toast shown`, el pro
 
 ## Notas de diseño (por qué el código hace cosas raras)
 
-Tres comportamientos de DSH y Windows que no son obvios y que el código evita a propósito:
+Cuatro comportamientos de DSH y Windows que no son obvios y que el código evita a propósito:
 
 1. **Las filas insertadas por un patch de bundle no se montan.** En `0.2.1-rc.5` aparecen en `dsh --dump-config` y aun así el módulo nunca se importa. Por eso la instalación es una fila `insert` en la capa de usuario del perfil, con URL `file://`.
 
 2. **`spawn(..., { detached: true })` no ejecuta PowerShell en Windows.** El proceso arranca y sale de inmediato con exit code `0` y sin error, así que el canal informa éxito mientras no muestra nada. El plugin lanza el hijo sin `detached`, con `stdio: 'ignore'` y `unref()`, que además sobrevive al cierre del host.
 
 3. **Un toast con AUMID no registrado se acepta pero no se dibuja.** Windows lo guarda en el historial y no muestra el banner, que se ve igual que "no pasó nada". El toast usa el AUMID de la app (`com.deepseek.dsh`) y cae al de Windows PowerShell si no existe.
+
+4. **El título de la conversación no está en `session.header`.** Llega como evento `session/title` (`{ title, messageSeqs, source }`), y `header.title` suele estar vacío. El plugin escucha ese evento y guarda el último título por sesión; si todavía no llegó ninguno, usa el nombre de la carpeta del proyecto (`header.cwd`) y solo como último recurso el id corto.
 
 También: los canales son *fire-and-forget*. Un proveedor caído nunca rechaza el turno ni escribe en el resultado del agente.
 

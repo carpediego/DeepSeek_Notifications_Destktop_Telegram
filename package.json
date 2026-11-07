@@ -1,6 +1,6 @@
 {
   "name": "dsh-turn-notify",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Desktop + Telegram notifications for DeepSeek Harness turns: finished, error and approval-waiting events.",
   "license": "MIT",
   "author": "carpediego",
