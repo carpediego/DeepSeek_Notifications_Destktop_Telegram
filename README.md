@@ -217,7 +217,7 @@ También: los canales son *fire-and-forget*. Un proveedor caído nunca rechaza e
 
 ## Compatibilidad
 
-- **DSH 0.2.x**: es el target. Los plugins públicos de notificación declaran `0.1.7`, y DSH rechaza instalarlos en 0.2.x — de ahí que este exista.
+- **DSH 0.2.x**: es el target. Probado en `0.2.1-rc.5` y `0.2.2-rc.1`. Los plugins públicos de notificación declaran `0.1.7`, y DSH rechaza instalarlos en 0.2.x — de ahí que este exista.
 - **DSH 0.1.x**: no probado. Los eventos (`agent/status`, `agent/error`, `approval/request`) existen desde antes, pero el mecanismo de carga cambió.
 - Si upstream arregla el montaje de bundles, el paso 3 se puede simplificar; el resto sigue igual.
 
